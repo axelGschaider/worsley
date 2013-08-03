@@ -1,0 +1,20 @@
+Default: &defaults
+  database: worsley.sqlite3
+  poolsize: 10
+
+Development:
+  <<: *defaults
+
+Testing:
+  database: worsley_test.sqlite3
+  <<: *defaults
+
+Staging:
+  database: worsley_staging.sqlite3
+  poolsize: 100
+  <<: *defaults
+
+Production:
+  database: worsley_production.sqlite3
+  poolsize: 100
+  <<: *defaults

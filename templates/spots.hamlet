@@ -1,0 +1,27 @@
+<h1>SPOTS
+<div class="right">
+    Eingeloggt als #{wGroupName plainUser}. 
+    <a href=@{AuthR LogoutR}> Logout?
+<p>
+  <div class="points">PUNKTE: <span class="counter">#{points}</span></div> 
+  <p>(#{harvesterPoints} durch eure Spots, #{hunterPoints} durch eure Antworten auf andere Spots und #{baseP} Basispunkte)
+
+<p>
+<h2>SPOT-LISTE
+$if null spots
+  <p> Keine Spots hier
+$else 
+  <ul>
+    $forall Entity spotId spot <- spots
+      <li class="spot $if">
+        <a href=@{SpotR spotId} >
+          #{spotTitle spot}
+            $if (spotCorrectAnswers spot) > 0
+              <p>#{spotCorrectAnswers spot} mal richtig beantwortet
+
+<p>
+  $if canCreate
+    <a href=@{AddR} class="newButton">
+      NEU
+  $else 
+    Ihr braucht mindestens 4 Punkte um einen neuen Spot zu erstellen

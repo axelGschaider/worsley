@@ -1,0 +1,23 @@
+<p>
+  <a href=@{WorsleyR}>Zurück zur Liste
+<h1> #{spotTitle spot}
+<article class="bordered"> #{spotDescription spot}
+
+<p>
+<h2>Antwortmöglichkeiten
+<ol>
+  $forall Entity propId prop <- props
+    <li class="answer">#{propositionText prop}
+
+<p>
+$if itIsYours
+  <p>Ihr habt diesen Spot erstellt und er hat euch bis jetzt #{spotPointsForOwner spot} Punkte eingebracht
+$else 
+  $if null yourAnswers
+    <p><form method=post enctype=#{enctype}>
+        ^{answerWidget}
+        <div>
+          <input type=submit value="Post">
+  $else 
+      $forall a <- yourAnswers
+          <p>Punkte für diesen Spot: #{answerPoints a}
